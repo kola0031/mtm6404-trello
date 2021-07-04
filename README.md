@@ -1,2 +1,4 @@
-# mtm6404-trello
-This repository contains the starter files for the Trello project.
+# Trello
+
+## Objective
+Use Vue, Vue Components and local storage to create a Trello clone. 
