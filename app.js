@@ -17,19 +17,35 @@ const app = Vue.createApp({
         {
           id: 'VZQUSU',
           list: 'To Do',
-          text: 'Create new card feature'
+          text: 'An item that I need to do'
         },
         {
           id: 'GXRRMI',
           list: 'Doing',
-          text: 'Create move card feature'
+          text: 'An item that I am doing'
         },
         {
           id: 'QLDJYB',
           list: 'Done',
-          text: 'Create display cards feature'
+          text: 'An item that is done'
         }
       ]
+    }
+  },
+  methods: {
+    getCards: function (list) {
+      return this.cards.filter(card => card.list === list)
+    },
+    createCard: function (list) {
+      this.cards.push({
+        id: serialNumber(6),
+        list: list,
+        text: ''
+      })
+    },
+    deleteCard: function (id) {
+      const card = this.cards.findIndex(card => card.id === id)
+      this.cards.splice(card, 1)
     }
   }
 })
