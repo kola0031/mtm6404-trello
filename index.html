@@ -1,40 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trello</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/vue@next"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
+
 <body>
-  <main id="app" class="main">
-    <h1 class="title">Trello</h1>
-    <div class="board">
-      
-      <div class="list">
-        <div class="list-header">
-          <h2 class="list-title">To Do</h2>
-          <button class="list-button">+</button>
+    <main id="app" class="main">
+        <h1 class="title">Trello</h1>
+        <div class="board">
+
+            <trello-list v-for="list in lists" :list="list" @create-card="createCard">
+                <trello-card v-for="card in getCards(list)" :id="card.id" :key="card.id" :initial-text="card.text" :initial-list="card.list" @update-text="updateText" @update-list="updateList" @delete-card="deleteCard"> </trello-card>
+
+            </trello-list>
+
         </div>
-        <div class="card">
-          <div class="card-action">
-            <select class="card-action-select">
-              <optgroup label="Move to:">
-                <option>To Do</option>
-                <option>Doing</option>
-                <option>Done</option>
-              </optgroup>
-            </select>
-            <button class="card-action-button">&times;</button>
-          </div>
-          <textarea class="card-text"></textarea>
-        </div>
-      </div>
-    
-    </div>
-  </main>
-  <script src="app.js"></script>
+    </main>
+    <script src="app.js"></script>
 </body>
+
 </html>
